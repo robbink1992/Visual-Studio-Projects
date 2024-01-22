@@ -1,0 +1,8 @@
+C:\Data\BI\Visual Studio Projects\SSAS - superstore\SSAS - superstore\bin\Model.asdatabase
+C:\Data\BI\Visual Studio Projects\SSAS - superstore\SSAS - superstore\bin\Model.deploymenttargets
+C:\Data\BI\Visual Studio Projects\SSAS - superstore\SSAS - superstore\bin\Model.deploymentoptions
+C:\Data\BI\Visual Studio Projects\SSAS - superstore\SSAS - superstore\obj\Development\SSAS - superstore.smproj.AssemblyReference.cache
+C:\Data\BI\Visual Studio Projects\SSAS - superstore\SSAS - superstore\obj\Development\SSAS - superstore.smproj.CoreCompileInputs.cache
+C:\Data\BI\Visual Studio Projects\SSAS - superstore\SSAS - superstore\obj\Development\Model.asdatabase
+C:\Data\BI\Visual Studio Projects\SSAS - superstore\SSAS - superstore\obj\Development\Model.deploymentoptions
+C:\Data\BI\Visual Studio Projects\SSAS - superstore\SSAS - superstore\obj\Development\Model.deploymenttargets

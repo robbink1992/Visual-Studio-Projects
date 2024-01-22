@@ -1,0 +1,738 @@
+{
+  "name": "SemanticModel",
+  "compatibilityLevel": 1600,
+  "model": {
+    "culture": "nl-NL",
+    "dataSources": [
+      {
+        "type": "structured",
+        "name": "SQL/MSI\\RKESTER;superstore-db",
+        "connectionDetails": {
+          "protocol": "tds",
+          "address": {
+            "server": "MSI\\RKESTER",
+            "database": "superstore-db"
+          },
+          "authentication": null,
+          "query": null
+        },
+        "credential": {
+          "AuthenticationKind": "UsernamePassword",
+          "kind": "SQL",
+          "path": "msi\\rkester;superstore-db",
+          "Username": "sa",
+          "EncryptConnection": true
+        }
+      }
+    ],
+    "tables": [
+      {
+        "name": "Category_Dim",
+        "columns": [
+          {
+            "name": "Category_Key",
+            "dataType": "string",
+            "sourceColumn": "Category_Key"
+          },
+          {
+            "name": "Category",
+            "dataType": "string",
+            "sourceColumn": "Category"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/MSI\\RKESTER;superstore-db\",",
+                "    dbo_Category_Dim = Source{[Schema=\"dbo\",Item=\"Category_Dim\"]}[Data]",
+                "in",
+                "    dbo_Category_Dim"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Country_Customer_Dim",
+        "columns": [
+          {
+            "name": "City_Key",
+            "dataType": "string",
+            "sourceColumn": "City_Key"
+          },
+          {
+            "name": "Country",
+            "dataType": "string",
+            "sourceColumn": "Country"
+          },
+          {
+            "name": "Region",
+            "dataType": "string",
+            "sourceColumn": "Region"
+          },
+          {
+            "name": "State",
+            "dataType": "string",
+            "sourceColumn": "State"
+          },
+          {
+            "name": "City",
+            "dataType": "string",
+            "sourceColumn": "City"
+          },
+          {
+            "name": "Postal_Code",
+            "dataType": "int64",
+            "sourceColumn": "Postal_Code"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/MSI\\RKESTER;superstore-db\",",
+                "    dbo_Country_Customer_Dim = Source{[Schema=\"dbo\",Item=\"Country_Customer_Dim\"]}[Data]",
+                "in",
+                "    dbo_Country_Customer_Dim"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Customer_Dim",
+        "columns": [
+          {
+            "name": "Customer_Key",
+            "dataType": "string",
+            "sourceColumn": "Customer_Key"
+          },
+          {
+            "name": "Customer_Name",
+            "dataType": "string",
+            "sourceColumn": "Customer_Name"
+          },
+          {
+            "name": "Gender",
+            "dataType": "string",
+            "sourceColumn": "Gender"
+          },
+          {
+            "name": "Age",
+            "dataType": "int64",
+            "sourceColumn": "Age"
+          },
+          {
+            "name": "Segment",
+            "dataType": "string",
+            "sourceColumn": "Segment"
+          },
+          {
+            "name": "Age_Group",
+            "dataType": "string",
+            "sourceColumn": "Age_Group"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/MSI\\RKESTER;superstore-db\",",
+                "    dbo_Customer_Dim = Source{[Schema=\"dbo\",Item=\"Customer_Dim\"]}[Data]",
+                "in",
+                "    dbo_Customer_Dim"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Employee_Dim",
+        "columns": [
+          {
+            "name": "Employee_Key",
+            "dataType": "string",
+            "sourceColumn": "Employee_Key"
+          },
+          {
+            "name": "Employee_Fullname",
+            "dataType": "string",
+            "sourceColumn": "Employee_Fullname"
+          },
+          {
+            "name": "Gender",
+            "dataType": "string",
+            "sourceColumn": "Gender"
+          },
+          {
+            "name": "Region",
+            "dataType": "string",
+            "sourceColumn": "Region"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/MSI\\RKESTER;superstore-db\",",
+                "    dbo_Employee_Dim = Source{[Schema=\"dbo\",Item=\"Employee_Dim\"]}[Data]",
+                "in",
+                "    dbo_Employee_Dim"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Order_Date_Dim",
+        "columns": [
+          {
+            "name": "Order_Date_Key",
+            "dataType": "string",
+            "sourceColumn": "Order_Date_Key"
+          },
+          {
+            "name": "Order_Date",
+            "dataType": "dateTime",
+            "sourceColumn": "Order_Date"
+          },
+          {
+            "name": "Order_Year",
+            "dataType": "int64",
+            "sourceColumn": "Order_Year"
+          },
+          {
+            "name": "Order_Quarter_Year",
+            "dataType": "int64",
+            "sourceColumn": "Order_Quarter_Year"
+          },
+          {
+            "name": "Order_Month",
+            "dataType": "string",
+            "sourceColumn": "Order_Month"
+          },
+          {
+            "name": "Order_Month_Number",
+            "dataType": "int64",
+            "sourceColumn": "Order_Month_Number"
+          },
+          {
+            "name": "Order_Week",
+            "dataType": "int64",
+            "sourceColumn": "Order_Week"
+          },
+          {
+            "name": "Order_Day",
+            "dataType": "string",
+            "sourceColumn": "Order_Day"
+          },
+          {
+            "name": "Order_Day_Number",
+            "dataType": "int64",
+            "sourceColumn": "Order_Day_Number"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/MSI\\RKESTER;superstore-db\",",
+                "    dbo_Order_Date_Dim = Source{[Schema=\"dbo\",Item=\"Order_Date_Dim\"]}[Data]",
+                "in",
+                "    dbo_Order_Date_Dim"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Product_Dim",
+        "columns": [
+          {
+            "name": "Product_Key",
+            "dataType": "string",
+            "sourceColumn": "Product_Key"
+          },
+          {
+            "name": "Sub_Category_Key",
+            "dataType": "string",
+            "sourceColumn": "Sub_Category_Key"
+          },
+          {
+            "name": "Product_Name",
+            "dataType": "string",
+            "sourceColumn": "Product_Name"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/MSI\\RKESTER;superstore-db\",",
+                "    dbo_Product_Dim = Source{[Schema=\"dbo\",Item=\"Product_Dim\"]}[Data]",
+                "in",
+                "    dbo_Product_Dim"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Returned_Dim",
+        "columns": [
+          {
+            "name": "Returned_Key",
+            "dataType": "string",
+            "sourceColumn": "Returned_Key"
+          },
+          {
+            "name": "Returned",
+            "dataType": "string",
+            "sourceColumn": "Returned"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/MSI\\RKESTER;superstore-db\",",
+                "    dbo_Returned_Dim = Source{[Schema=\"dbo\",Item=\"Returned_Dim\"]}[Data]",
+                "in",
+                "    dbo_Returned_Dim"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Region_Manager_Dim",
+        "columns": [
+          {
+            "name": "Region_Manager_Key",
+            "dataType": "string",
+            "sourceColumn": "Region_Manager_Key"
+          },
+          {
+            "name": "Region_Manager",
+            "dataType": "string",
+            "sourceColumn": "Region_Manager"
+          },
+          {
+            "name": "Region",
+            "dataType": "string",
+            "sourceColumn": "Region"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/MSI\\RKESTER;superstore-db\",",
+                "    dbo_Region_Manager_Dim = Source{[Schema=\"dbo\",Item=\"Region_Manager_Dim\"]}[Data]",
+                "in",
+                "    dbo_Region_Manager_Dim"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Sales_Fact",
+        "columns": [
+          {
+            "name": "Order_Key",
+            "dataType": "string",
+            "sourceColumn": "Order_Key"
+          },
+          {
+            "name": "Order_Date_Key",
+            "dataType": "string",
+            "sourceColumn": "Order_Date_Key"
+          },
+          {
+            "name": "Ship_Date_Key",
+            "dataType": "string",
+            "sourceColumn": "Ship_Date_Key"
+          },
+          {
+            "name": "Product_Key",
+            "dataType": "string",
+            "sourceColumn": "Product_Key"
+          },
+          {
+            "name": "Ship_Mode_Key",
+            "dataType": "string",
+            "sourceColumn": "Ship_Mode_Key"
+          },
+          {
+            "name": "City_Key",
+            "dataType": "string",
+            "sourceColumn": "City_Key"
+          },
+          {
+            "name": "Region_Manager_Key",
+            "dataType": "string",
+            "sourceColumn": "Region_Manager_Key"
+          },
+          {
+            "name": "Employee_Key",
+            "dataType": "string",
+            "sourceColumn": "Employee_Key"
+          },
+          {
+            "name": "Customer_Key",
+            "dataType": "string",
+            "sourceColumn": "Customer_Key"
+          },
+          {
+            "name": "Returned_Key",
+            "dataType": "string",
+            "sourceColumn": "Returned_Key"
+          },
+          {
+            "name": "Order_Date",
+            "dataType": "dateTime",
+            "sourceColumn": "Order_Date"
+          },
+          {
+            "name": "Ship_Date",
+            "dataType": "dateTime",
+            "sourceColumn": "Ship_Date"
+          },
+          {
+            "name": "Quantity",
+            "dataType": "int64",
+            "sourceColumn": "Quantity"
+          },
+          {
+            "name": "Product_Price",
+            "dataType": "double",
+            "sourceColumn": "Product_Price"
+          },
+          {
+            "name": "Product_Cost",
+            "dataType": "double",
+            "sourceColumn": "Product_Cost"
+          },
+          {
+            "name": "Product_Profit_Expected",
+            "dataType": "double",
+            "sourceColumn": "Product_Profit_Expected"
+          },
+          {
+            "name": "Product_Price_Discount",
+            "dataType": "double",
+            "sourceColumn": "Product_Price_Discount"
+          },
+          {
+            "name": "Product_Profit_Discount",
+            "dataType": "double",
+            "sourceColumn": "Product_Profit_Discount"
+          },
+          {
+            "name": "TaxAmt",
+            "dataType": "double",
+            "sourceColumn": "TaxAmt"
+          },
+          {
+            "name": "Freight",
+            "dataType": "double",
+            "sourceColumn": "Freight"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/MSI\\RKESTER;superstore-db\",",
+                "    dbo_Sales_Fact = Source{[Schema=\"dbo\",Item=\"Sales_Fact\"]}[Data]",
+                "in",
+                "    dbo_Sales_Fact"
+              ]
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Omzet",
+            "expression": " SUMX(Sales_Fact,Sales_Fact[Quantity] * Sales_Fact[Product_Price_Discount])"
+          },
+          {
+            "name": "Kosten",
+            "expression": " SUMX(Sales_Fact,Sales_Fact[Quantity] * Sales_Fact[Product_Cost])"
+          },
+          {
+            "name": "Omzet Vorig Jaar",
+            "expression": " CALCULATE([Omzet], SAMEPERIODLASTYEAR(Order_Date_Dim[Order_Date]))"
+          },
+          {
+            "name": "Omzetgroei %",
+            "expression": [
+              " ",
+              "VAR PYPremium =",
+              " CALCULATE(Sales_Fact[Omzet],SAMEPERIODLASTYEAR(Order_Date_Dim[Order_Date]))",
+              " RETURN ",
+              " DIVIDE((Sales_Fact[Omzet]-PYPremium),PYPremium)"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Ship_Date_Dim",
+        "columns": [
+          {
+            "name": "Ship_Date_Key",
+            "dataType": "string",
+            "sourceColumn": "Ship_Date_Key"
+          },
+          {
+            "name": "Ship_Date",
+            "dataType": "dateTime",
+            "sourceColumn": "Ship_Date"
+          },
+          {
+            "name": "Ship_Year",
+            "dataType": "int64",
+            "sourceColumn": "Ship_Year"
+          },
+          {
+            "name": "Ship_Quarter_Year",
+            "dataType": "int64",
+            "sourceColumn": "Ship_Quarter_Year"
+          },
+          {
+            "name": "Ship_Month",
+            "dataType": "string",
+            "sourceColumn": "Ship_Month"
+          },
+          {
+            "name": "Ship_Month_Number",
+            "dataType": "int64",
+            "sourceColumn": "Ship_Month_Number"
+          },
+          {
+            "name": "Ship_Week",
+            "dataType": "int64",
+            "sourceColumn": "Ship_Week"
+          },
+          {
+            "name": "Ship_Day",
+            "dataType": "string",
+            "sourceColumn": "Ship_Day"
+          },
+          {
+            "name": "Ship_Day_Number",
+            "dataType": "int64",
+            "sourceColumn": "Ship_Day_Number"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/MSI\\RKESTER;superstore-db\",",
+                "    dbo_Ship_Date_Dim = Source{[Schema=\"dbo\",Item=\"Ship_Date_Dim\"]}[Data]",
+                "in",
+                "    dbo_Ship_Date_Dim"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Ship_Mode_Dim",
+        "columns": [
+          {
+            "name": "Ship_Mode_Key",
+            "dataType": "string",
+            "sourceColumn": "Ship_Mode_Key"
+          },
+          {
+            "name": "Ship_Mode",
+            "dataType": "string",
+            "sourceColumn": "Ship_Mode"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/MSI\\RKESTER;superstore-db\",",
+                "    dbo_Ship_Mode_Dim = Source{[Schema=\"dbo\",Item=\"Ship_Mode_Dim\"]}[Data]",
+                "in",
+                "    dbo_Ship_Mode_Dim"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Sub_Category_Dim",
+        "columns": [
+          {
+            "name": "Sub_Category_Key",
+            "dataType": "string",
+            "sourceColumn": "Sub_Category_Key"
+          },
+          {
+            "name": "Category_Key",
+            "dataType": "string",
+            "sourceColumn": "Category_Key"
+          },
+          {
+            "name": "Sub_Category",
+            "dataType": "string",
+            "sourceColumn": "Sub_Category"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/MSI\\RKESTER;superstore-db\",",
+                "    dbo_Sub_Category_Dim = Source{[Schema=\"dbo\",Item=\"Sub_Category_Dim\"]}[Data]",
+                "in",
+                "    dbo_Sub_Category_Dim"
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "e3c4e93a-d840-4c17-9de0-57a64aa521e4",
+        "fromTable": "Sub_Category_Dim",
+        "fromColumn": "Category_Key",
+        "toTable": "Category_Dim",
+        "toColumn": "Category_Key"
+      },
+      {
+        "name": "72d2351d-82cf-4c4c-a7e8-fe3efaeea034",
+        "fromTable": "Sales_Fact",
+        "fromColumn": "City_Key",
+        "toTable": "Country_Customer_Dim",
+        "toColumn": "City_Key"
+      },
+      {
+        "name": "9879650e-0808-4d73-b73b-869101178ffb",
+        "fromTable": "Sales_Fact",
+        "fromColumn": "Customer_Key",
+        "toTable": "Customer_Dim",
+        "toColumn": "Customer_Key"
+      },
+      {
+        "name": "0ab65142-a45e-4c4d-a0ff-ded373fad70d",
+        "fromTable": "Sales_Fact",
+        "fromColumn": "Employee_Key",
+        "toTable": "Employee_Dim",
+        "toColumn": "Employee_Key"
+      },
+      {
+        "name": "ffd907c3-be7d-4515-aee0-559f82951282",
+        "fromTable": "Sales_Fact",
+        "fromColumn": "Order_Date_Key",
+        "toTable": "Order_Date_Dim",
+        "toColumn": "Order_Date_Key"
+      },
+      {
+        "name": "7072f765-9310-4963-a739-cc8152cbbc86",
+        "fromTable": "Sales_Fact",
+        "fromColumn": "Product_Key",
+        "toTable": "Product_Dim",
+        "toColumn": "Product_Key"
+      },
+      {
+        "name": "745590a5-9598-47ae-8bc2-50e8df303bb4",
+        "fromTable": "Product_Dim",
+        "fromColumn": "Sub_Category_Key",
+        "toTable": "Sub_Category_Dim",
+        "toColumn": "Sub_Category_Key"
+      },
+      {
+        "name": "6dda16d0-8c16-453d-8d06-061f6adc33ee",
+        "fromTable": "Sales_Fact",
+        "fromColumn": "Returned_Key",
+        "toTable": "Returned_Dim",
+        "toColumn": "Returned_Key"
+      },
+      {
+        "name": "d518191e-6e94-4ba7-b358-3e28e2a20c23",
+        "fromTable": "Sales_Fact",
+        "fromColumn": "Region_Manager_Key",
+        "toTable": "Region_Manager_Dim",
+        "toColumn": "Region_Manager_Key"
+      },
+      {
+        "name": "f9d8db0b-af27-4a2d-b201-d5b44563c4ac",
+        "fromTable": "Sales_Fact",
+        "fromColumn": "Ship_Date_Key",
+        "toTable": "Ship_Date_Dim",
+        "toColumn": "Ship_Date_Key"
+      },
+      {
+        "name": "ed84fdc3-c8fd-4dc2-b9d1-051316228fe8",
+        "fromTable": "Sales_Fact",
+        "fromColumn": "Ship_Mode_Key",
+        "toTable": "Ship_Mode_Dim",
+        "toColumn": "Ship_Mode_Key"
+      }
+    ],
+    "annotations": [
+      {
+        "name": "ClientCompatibilityLevel",
+        "value": "700"
+      }
+    ]
+  },
+  "id": "SemanticModel"
+}
