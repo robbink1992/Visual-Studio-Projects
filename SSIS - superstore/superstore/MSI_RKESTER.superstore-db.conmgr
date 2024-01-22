@@ -1,0 +1,12 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="MSI_RKESTER.superstore-db"
+  DTS:DTSID="{4D850396-FA4F-42FD-89BE-3C7EA5F4646B}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=MSI\RKESTER;Initial Catalog=superstore-db;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-superstore-{4D850396-FA4F-42FD-89BE-3C7EA5F4646B}MSI\RKESTER.superstore-db;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>
