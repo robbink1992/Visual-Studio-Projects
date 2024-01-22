@@ -11,8 +11,8 @@
   DTS:LocaleID="1043"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="96"
-  DTS:VersionGUID="{6F8454F7-A813-4BE8-8771-7A2133AFC1F9}">
+  DTS:VersionBuild="97"
+  DTS:VersionGUID="{F2F50B15-523E-4463-85F8-09A78D264479}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -701,6 +701,21 @@
               SQLTask:SqlStatementSource="EXECUTE [input].[drop_input_tables]&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\drop_create_input_tables\test"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{F0FC0DCA-12DC-427E-A0F7-EC892211146B}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="test"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1" />
+          </DTS:ObjectData>
+        </DTS:Executable>
       </DTS:Executables>
       <DTS:PrecedenceConstraints>
         <DTS:PrecedenceConstraint
@@ -711,6 +726,14 @@
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint"
           DTS:To="Package\drop_create_input_tables\create_input_tables" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\drop_create_input_tables.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{5DAA9F66-CCD6-4EA1-AE82-1C18B88A573A}"
+          DTS:From="Package\drop_create_input_tables\create_input_tables"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\drop_create_input_tables\test" />
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
     <DTS:Executable
@@ -10673,14 +10696,40 @@ ORDER BY
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60.0000000000001"
+              EndConnector="0,60.0000000000004"
               Start="0,0"
-              End="0,52.5000000000001">
+              End="0,52.5000000000004">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.5000000000001" />
+                    End="0,52.5000000000004" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="97.3333333333334,42.6666666666667"
+          Id="Package\drop_create_input_tables\test"
+          TopLeft="35.3333293100199,196.3999883461" />
+        <EdgeLayout
+          Id="Package\drop_create_input_tables.PrecedenceConstraints[Constraint 1]"
+          TopLeft="87.7499979883433,150.833333333334">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,45.5666550127665"
+              Start="0,0"
+              End="0,38.0666550127665">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.0666550127665" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -10692,10 +10741,10 @@ ORDER BY
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="182.666666666667,206"
-          Size="182.666666666667,248.666666666667"
+          PanelSize="212,290.666666666667"
+          Size="212,334"
           Id="Package\drop_create_input_tables"
-          TopLeft="54.8333333333334,5.50000000000016" />
+          TopLeft="54.8333333333334,5.50000000000017" />
         <NodeLayout
           Size="162.666666666667,42.6666666666667"
           Id="Package\drop_create_stg_tables\create_stg_tables"
@@ -10750,6 +10799,10 @@ ORDER BY
           Id="Package\extract_load_dim_data\load_employee_dim_table_dbo"
           TopLeft="25.5,209.5" />
         <NodeLayout
+          Size="216,42.6666666666667"
+          Id="Package\extract_load_dim_data\load_product_dim_table_dbo"
+          TopLeft="30.1666666666667,618.166666666667" />
+        <NodeLayout
           Size="257.333333333334,42"
           Id="Package\extract_load_dim_data\load_region_manager_dim_table_dbo"
           TopLeft="9.50000000000003,311.5" />
@@ -10757,10 +10810,6 @@ ORDER BY
           Size="221.333333333334,42.6666666666667"
           Id="Package\extract_load_dim_data\load_returned_dim_table_dbo"
           TopLeft="27.5,413.5" />
-        <NodeLayout
-          Size="216,42.6666666666667"
-          Id="Package\extract_load_dim_data\load_product_dim_table_dbo"
-          TopLeft="30.1666666666667,618.166666666667" />
         <EdgeLayout
           Id="Package\extract_load_dim_data.PrecedenceConstraints[Constraint]"
           TopLeft="138.166666666667,47.5">
@@ -11117,18 +11166,24 @@ ORDER BY
           TopLeft="22.8333333333336,1548.16666666667" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="146.166666666667,254.166666666667">
+          TopLeft="160.833333333333,339.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60.0000000000003"
+              EndConnector="72,99.0000000000002"
               Start="0,0"
-              End="0,52.5000000000003">
+              End="64.5,99.0000000000002">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.5000000000003" />
+                    End="0,95.0000000000002" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,95.0000000000002"
+                    Point2="0,99.0000000000002"
+                    Point3="4,99.0000000000002" />
+                  <mssgle:LineSegment
+                    End="64.5,99.0000000000002" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -11815,6 +11870,19 @@ ORDER BY
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
+    design-time-name="Package\extract_load_dim_data\load_different_dim_tables_dbo\dbo_Customer_Dim">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\extract_load_dim_data\load_different_dim_tables_dbo\dbo_Sub_Category_Dim">
     <Properties>
       <Property>
@@ -11828,20 +11896,7 @@ ORDER BY
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\extract_load_dim_data\load_different_dim_tables_dbo\stg_main_table">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\extract_load_dim_data\load_different_dim_tables_dbo\dbo_Customer_Dim">
+    design-time-name="Package\extract_load_dim_data\load_different_dim_tables_dbo\dbo_Category_Dim">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -11867,7 +11922,7 @@ ORDER BY
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\extract_load_dim_data\load_different_dim_tables_dbo\dbo_Category_Dim">
+    design-time-name="Package\extract_load_dim_data\load_different_dim_tables_dbo\stg_main_table">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -11934,6 +11989,91 @@ ORDER BY
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\extract_load_dim_data\load_employee_dim_table_dbo\stg_employee_table">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\extract_load_dim_data\load_product_dim_table_dbo">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="164,42.6666666666667"
+          Id="Package\extract_load_dim_data\load_product_dim_table_dbo\dbo_Product_Dim"
+          TopLeft="5.50000000000003,210.833333333334" />
+        <NodeLayout
+          Size="152,42.6666666666667"
+          Id="Package\extract_load_dim_data\load_product_dim_table_dbo\stg_main_table"
+          TopLeft="11.5,5.50000000000004" />
+        <NodeLayout
+          Size="128,42.6666666666667"
+          Id="Package\extract_load_dim_data\load_product_dim_table_dbo\Aggregate"
+          TopLeft="23.5,108.166666666667" />
+        <EdgeLayout
+          Id="Package\extract_load_dim_data\load_product_dim_table_dbo.Paths[OLE DB Source Output]"
+          TopLeft="87.5,48.1666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.0000000000001"
+              Start="0,0"
+              End="0,52.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\extract_load_dim_data\load_product_dim_table_dbo.Paths[Aggregate Output 1]"
+          TopLeft="87.5,150.833333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.0000000000001"
+              Start="0,0"
+              End="0,52.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\extract_load_dim_data\load_product_dim_table_dbo\stg_main_table">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\extract_load_dim_data\load_product_dim_table_dbo\dbo_Product_Dim">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -12533,91 +12673,6 @@ ORDER BY
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\extract_load_dim_data\load_product_dim_table_dbo">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="164,42.6666666666667"
-          Id="Package\extract_load_dim_data\load_product_dim_table_dbo\dbo_Product_Dim"
-          TopLeft="5.50000000000003,210.833333333334" />
-        <NodeLayout
-          Size="152,42.6666666666667"
-          Id="Package\extract_load_dim_data\load_product_dim_table_dbo\stg_main_table"
-          TopLeft="11.5,5.50000000000004" />
-        <NodeLayout
-          Size="128,42.6666666666667"
-          Id="Package\extract_load_dim_data\load_product_dim_table_dbo\Aggregate"
-          TopLeft="23.5,108.166666666667" />
-        <EdgeLayout
-          Id="Package\extract_load_dim_data\load_product_dim_table_dbo.Paths[OLE DB Source Output]"
-          TopLeft="87.5,48.1666666666667">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60.0000000000001"
-              Start="0,0"
-              End="0,52.5000000000001">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5000000000001" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\extract_load_dim_data\load_product_dim_table_dbo.Paths[Aggregate Output 1]"
-          TopLeft="87.5,150.833333333333">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60.0000000000001"
-              Start="0,0"
-              End="0,52.5000000000001">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5000000000001" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\extract_load_dim_data\load_product_dim_table_dbo\dbo_Product_Dim">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\extract_load_dim_data\load_product_dim_table_dbo\stg_main_table">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
